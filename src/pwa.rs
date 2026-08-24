@@ -259,7 +259,7 @@ mod tests {
 
     #[test]
     fn parses_installable_manifest_defaults() {
-        let manifest = parse_pwa_manifest(r#"{"name":"Nexus Notes","short_name":"Notes","theme_color":"#112233"}"#).unwrap();
+        let manifest = parse_pwa_manifest(r##"{"name":"Nexus Notes","short_name":"Notes","theme_color":"#112233"}"##).unwrap();
         assert_eq!(manifest.start_url, "/");
         assert_eq!(manifest.display, "browser");
     }

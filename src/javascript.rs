@@ -1042,8 +1042,7 @@ fn install_native_callbacks(
                   method: String,
                   body: String,
                   content_type: String,
-                  mode: String,
-                  credentials: String|
+                  mode: String|
                   -> String {
                 let (base, security) = match fetch_state.lock() {
                     Ok(state) => (state.dom.base_url(), state.security.clone()),
@@ -1059,7 +1058,7 @@ fn install_native_callbacks(
                     Ok(value) => value,
                     Err(error) => return json!({"ok": false, "error": error}).to_string(),
                 };
-                let credentials = match parse_credentials_mode(&credentials) {
+                let credentials = match parse_credentials_mode("same-origin") {
                     Ok(value) => value,
                     Err(error) => return json!({"ok": false, "error": error}).to_string(),
                 };
@@ -1636,7 +1635,7 @@ const WEB_API_BOOTSTRAP: &str = r#"
         }
         const mode = String(init.mode || 'cors');
         const credentials = String(init.credentials || 'same-origin');
-        const payload = JSON.parse(__nexus_fetch(String(input), method, body, contentType, mode, credentials));
+        const payload = JSON.parse(__nexus_fetch(String(input), method, body, contentType, mode));
         if (!payload.ok && payload.error) {
           reject(new TypeError(payload.error));
           return;

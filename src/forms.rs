@@ -63,7 +63,7 @@ pub fn describe_control(dom: &NexusDom, node: NodeId) -> Option<FormControlDescr
     };
     Some(FormControlDescriptor {
         node_id: node,
-        tag,
+        tag: tag.clone(),
         input_type,
         name: dom.attribute(node, "name").unwrap_or("").to_owned(),
         value,

@@ -34,7 +34,7 @@ serde_json = "1.0"
 reqwest_cookie_store = "0.10.0"
 serde = { version = "1.0", features = ["derive"] }
 tungstenite = { version = "0.30.0", default-features = false, features = ["handshake"] }
-tokio = { version = "1", features = ["rt-multi-thread", "sync", "net", "time"] }
+tokio = { version = "1", features = ["rt-multi-thread", "sync", "net", "time", "macros"] }
 tokio-tungstenite = { version = "0.30.0", default-features = false, features = ["connect", "handshake", "rustls-tls-webpki-roots"] }
 futures-util = { version = "0.3", features = ["sink"] }
 
