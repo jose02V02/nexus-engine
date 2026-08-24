@@ -7,7 +7,6 @@
 
 use std::cell::Cell;
 use std::ffi::c_void;
-use std::panic::AssertUnwindSafe;
 use std::os::raw::c_int;
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
@@ -1035,11 +1034,11 @@ fn install_native_callbacks(
         .map_err(|error| error.to_string())?;
 
     let fetch_state = Arc::clone(state);
-    let fetch_network = network.clone();
+    let fetch_network = Mutex::new(network.clone());
     context
         .add_callback(
             "__nexus_fetch",
-            AssertUnwindSafe(move |input: String,
+            move |input: String,
                   method: String,
                   body: String,
                   content_type: String,
@@ -1065,6 +1064,10 @@ fn install_native_callbacks(
                 };
                 let body_bytes = (!body.is_empty()).then_some(body.as_bytes());
                 let content_type = (!content_type.is_empty()).then_some(content_type.as_str());
+                let fetch_network = match fetch_network.lock() {
+                    Ok(network) => network,
+                    Err(_) => return json!({"ok": false, "error": "network client unavailable"}).to_string(),
+                };
                 match fetch_network.web_request(
                     &security,
                     &url,
@@ -1088,7 +1091,7 @@ fn install_native_callbacks(
                     }
                     Err(error) => json!({"ok": false, "error": error.to_string()}).to_string(),
                 }
-            }),
+            },
         )
         .map_err(|error| error.to_string())?;
 
