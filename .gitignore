@@ -1,0 +1,12 @@
+/target
+/release-audit.json
+.DS_Store
+.idea/
+.vscode/
+*.iml
+/android/.gradle/
+/android/app/build/
+/android/native/target/
+/android/app/src/main/jniLibs/**/*.so
+
+.nexus-profile/

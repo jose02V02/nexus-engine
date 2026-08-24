@@ -1,0 +1,18 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexus 0.19 feature queries and CSS math</title>
+<style>
+  :root { --accent:#2563eb; --space:clamp(12px, 3vw, 28px); }
+  body { margin:0; padding:var(--space); font-family:sans-serif; }
+  .panel { width:min(88vw, 680px); min-height:max(18vh, 120px); padding:var(--space); }
+  @supports (display:grid) and (selector(.panel > .item)) {
+    .panel { display:grid; gap:clamp(8px, 2vw, 20px); border:2px solid var(--accent); }
+  }
+  @supports not (display:subgrid) {
+    .panel::after { content:"Nexus fallback: subgrid unavailable"; color:var(--accent); }
+  }
+</style>
+<main class="panel">
+  <h1>Nexus Engine 0.19</h1>
+  <p class="item">@supports + min() + max() + clamp()</p>
+</main>

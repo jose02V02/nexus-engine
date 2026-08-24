@@ -1,0 +1,26 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus 0.25 Advanced Grid</title>
+<style>
+  body { margin: 24px; font-family: sans-serif; background: #eef2ff; }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) repeat(2, minmax(100px, 2fr));
+    grid-auto-rows: minmax(72px, auto);
+    gap: 12px;
+  }
+  .card { padding: 16px; background: white; border-radius: 12px; }
+  .hero { grid-column: 1 / span 2; }
+  .aside { grid-column: 3; grid-row: 1 / span 2; }
+  .footer { grid-column: 1 / -1; }
+  @media (max-width: 680px) {
+    .grid { grid-template-columns: minmax(0px, 1fr); }
+    .hero, .aside, .footer { grid-column: 1; grid-row: auto; }
+  }
+</style>
+<main class="grid">
+  <section class="card hero"><h1>Nexus Grid 0.21</h1><p>Explicit placement and spans.</p></section>
+  <aside class="card aside">Implicit rows use minmax().</aside>
+  <section class="card">A</section><section class="card">B</section>
+  <footer class="card footer">Responsive advanced grid.</footer>
+</main>

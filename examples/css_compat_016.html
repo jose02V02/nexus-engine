@@ -1,0 +1,20 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexus Engine 0.16 CSS Compatibility</title>
+<style>
+  :root { --accent: #635bff; --space: 1rem; --card: calc(100vw - 2rem); }
+  body { margin: 0; padding: var(--space); background: #f5f7fb; }
+  main > .grid { display: grid; gap: var(--space); }
+  .card[data-feature] { width: var(--card); padding: 1rem; background: white; }
+  .card:first-child { border: 2px solid var(--accent); }
+  .card:nth-child(2n) { transform: translateX(8px); }
+  .card:last-child::after { content: " · Nexus 0.16"; color: #635bff; }
+  @media (min-width: 700px) { :root { --card: 40vw; } }
+</style>
+<main>
+  <section class="grid">
+    <article class="card" data-feature="selectors">Advanced selectors</article>
+    <article class="card" data-feature="variables">Variables and calc()</article>
+    <article class="card" data-feature="units">rem, vw, vh, vmin and vmax</article>
+  </section>
+</main>

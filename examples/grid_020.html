@@ -1,0 +1,27 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexus Engine 0.25 CSS Grid</title>
+<style>
+  :root { --gap:clamp(10px, 2vw, 22px); --accent:#2563eb; }
+  body { margin:0; padding:var(--gap); font-family:sans-serif; background:#f5f7fb; }
+  .dashboard {
+    display:grid;
+    width:min(92vw, 960px);
+    grid-template-columns:repeat(3, 1fr);
+    grid-template-rows:auto repeat(2, 120px);
+    grid-auto-flow:row dense;
+    column-gap:18px;
+    row-gap:14px;
+  }
+  .card { padding:16px; background:white; border:1px solid #dbe3f1; }
+  .card:first-child { border-color:var(--accent); }
+  @media (max-width:620px) { .dashboard { grid-template-columns:1fr; } }
+</style>
+<main class="dashboard">
+  <article class="card"><h1>Nexus 0.20</h1></article>
+  <article class="card">CSS Grid</article>
+  <article class="card">repeat() + fr</article>
+  <article class="card">Responsive tracks</article>
+  <article class="card">Dense auto-flow</article>
+  <article class="card">Independent gaps</article>
+</main>

@@ -1,0 +1,17 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus 0.25 Named Grid Areas</title>
+<style>
+  body { margin:0; font-family:sans-serif; background:#e2e8f0; }
+  .shell { min-height:100vh; display:grid; gap:12px; padding:12px;
+    grid-template-columns:220px minmax(0px, 1fr);
+    grid-template-rows:80px minmax(360px, auto) 64px;
+    grid-template-areas:"header header" "sidebar content" "footer footer"; }
+  header { grid-area:header; background:#172554; color:white; padding:20px; }
+  aside { grid-area:sidebar; background:#bfdbfe; padding:20px; }
+  main { grid-area:content; background:white; padding:20px; }
+  footer { grid-area:footer; background:#1e3a8a; color:white; padding:20px; }
+  @media (max-width:680px) { .shell { grid-template-columns:1fr; grid-template-rows:auto;
+    grid-template-areas:"header" "content" "sidebar" "footer"; } }
+</style>
+<div class="shell"><header>Nexus 0.25</header><aside>Navigation</aside><main>Named areas adapt to the viewport.</main><footer>Footer</footer></div>

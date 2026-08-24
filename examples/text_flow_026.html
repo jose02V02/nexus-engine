@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nexus 0.26 Text Flow</title>
+  <style>
+    body { margin:24px; background:#eef2f8; color:#18233a; font:normal 400 16px/1.55 sans-serif; }
+    main { max-width:680px; margin:auto; padding:28px; background:white; }
+    h1 { text-transform:uppercase; text-align:center; }
+    .intro { text-indent:36px; }
+    .label { text-transform:capitalize; font-weight:700; }
+    .nowrap { white-space:nowrap; overflow:hidden; text-decoration:underline; }
+    pre { white-space:pre-wrap; padding:14px; background:#172033; color:white; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Nexus text flow</h1>
+    <p class="intro">Il primo rigo riceve un rientro reale prima del paint.</p>
+    <p class="label">ogni parola può iniziare in maiuscolo</p>
+    <p class="nowrap">Questa riga non viene spezzata automaticamente.</p>
+    <pre>spazi preservati
+e nuove righe
+attraverso Parley</pre>
+  </main>
+</body>
+</html>

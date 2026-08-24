@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nexus 0.70 Modern Web Compatibility</title>
+  <style>
+    body { margin:0; background:#eef2f7; color:#142039; font:normal 400 16px/1.55 sans-serif; }
+    header { position:sticky; top:0; z-index:10; padding:18px; background:#172033; color:white; text-align:center; }
+    main { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; max-width:980px; margin:24px auto; }
+    article { padding:18px; background:white; border-radius:14px; overflow:hidden; }
+    img { width:100%; height:180px; object-fit:cover; object-position:center 35%; }
+    .disabled { pointer-events:none; opacity:.55; }
+    .reserved { visibility:hidden; }
+    @media (max-width:600px) { main { grid-template-columns:1fr; margin:14px; } }
+  </style>
+</head>
+<body>
+  <header>Nexus Engine 0.70</header>
+  <main>
+    <article><img src="hero.jpg"><h2>Replaced content</h2><p>Cover mantiene il rapporto e ritaglia nel box.</p></article>
+    <article class="disabled"><h2>Interaction policy</h2><p>Questo pannello non intercetta il puntatore.</p></article>
+    <article class="reserved"><h2>Reserved layout</h2><p>Occupa spazio senza essere dipinto.</p></article>
+  </main>
+</body>
+</html>

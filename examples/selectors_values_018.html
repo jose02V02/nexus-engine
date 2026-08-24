@@ -1,0 +1,20 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexus 0.18 selectors and global values</title>
+<style>
+  :root { --accent:#4f46e5; --surface:#eef2ff; }
+  body { padding:1rem; font-family:sans-serif; color:#20243a; }
+  [data-kind~="card"] { padding:1rem; margin:.75rem 0; background:var(--surface); }
+  [data-url^="https"]::after { content:" secure"; color:var(--accent); }
+  [data-file$=".PDF" i] { border:2px solid var(--accent); }
+  article:first-of-type { width:calc(100vw - 4rem); }
+  article:nth-of-type(2) { transform:translateX(8px); }
+  article:last-of-type { opacity:.8; }
+  .inherited { color:inherit; font-size:unset; width:initial; }
+</style>
+<main>
+  <article data-kind="featured card" data-url="https://nexus.local">Attribute operators</article>
+  <article data-kind="card" data-file="guide.pdf">Case-insensitive suffix</article>
+  <article data-kind="card">Structural selectors of type</article>
+  <section style="color:#4f46e5;font-size:18px"><p class="inherited">inherit / initial / unset</p></section>
+</main>

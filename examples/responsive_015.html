@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Nexus 0.15 CSS demo</title>
+<style>
+  body { margin:0; font-family:sans-serif; color:#172033; }
+  .toolbar { position:sticky; top:0; z-index:20; background:#ffffff; height:56px; border-bottom:1px solid #ccd3df; }
+  .toolbar::before { content:"NEXUS 0.15"; color:#2457d6; font-size:18px; }
+  .hero { width:620px; max-width:90%; height:160px; margin:24px; padding:20px; background:#edf3ff; border-radius:18px; overflow:hidden; }
+  .badge { position:absolute; right:20px; top:80px; z-index:5; width:120px; height:44px; background:#2457d6; color:white; transform:translateX(8px) scale(1.05); }
+  .badge::after { content:" responsive"; color:white; }
+  .spacer { height:900px; }
+  @media screen and (max-width:600px) {
+    .hero { width:320px; height:210px; background:#f7f9ff; }
+    .badge { width:92px; }
+  }
+</style>
+</head>
+<body>
+  <div class="toolbar"></div>
+  <main class="hero">
+    <h1>Responsive CSS</h1>
+    <p>Resize or zoom the Nexus viewport to trigger the media query.</p>
+    <div class="badge">mobile</div>
+  </main>
+  <div class="spacer"></div>
+</body>
+</html>

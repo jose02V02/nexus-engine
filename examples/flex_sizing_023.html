@@ -1,0 +1,17 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus 0.25 Adaptive Flexbox</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 24px; font-family: sans-serif; background: #f8fafc; color: #172033; }
+  .cards { display:flex; flex-flow:row wrap; gap:16px; align-items:stretch; }
+  .card { flex:1 1 220px; min-width:180px; padding:18px; background:white; border:2px solid #cbd5e1; border-radius:14px; }
+  .preview { width:100%; aspect-ratio:16 / 9; background:#0f766e; border-radius:9px; }
+  .priority { order:-1; }
+  @media (max-width:600px) { .card { flex-basis:100%; } }
+</style>
+<main class="cards">
+  <article class="card"><div class="preview"></div><h2>Flexible</h2></article>
+  <article class="card priority"><div class="preview"></div><h2>Ordered first</h2></article>
+  <article class="card"><div class="preview"></div><h2>Responsive wrap</h2></article>
+</main>

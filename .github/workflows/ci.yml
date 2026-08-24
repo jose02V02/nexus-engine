@@ -1,0 +1,66 @@
+name: Nexus Engine CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  NEXUS_VERSION: "1.02.0"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Audit release metadata and JNI
+        run: python3 tools/release_audit.py --output release-audit.json
+
+      - name: Install Clang for QuickJS-ng
+        run: sudo apt-get update && sudo apt-get install -y clang libclang-dev
+
+      - name: Install Rust 1.88.0
+        uses: dtolnay/rust-toolchain@1.88.0
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache Cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Format check (advisory)
+        run: cargo fmt --all -- --check || true
+
+      - name: Tests
+        run: cargo test --all-targets
+
+      - name: Release build
+        run: cargo build --release
+
+      - name: Smoke render example.com
+        run: ./target/release/nexus https://example.com --render nexus-example.png --viewport 390x844
+
+      - name: Verify rendered PNG
+        run: test -s nexus-example.png
+
+      - name: Smoke multi-tab BrowserCore
+        run: ./target/release/nexus-browser https://example.com https://example.org
+
+      - name: Clippy (advisory while engine APIs evolve)
+        run: cargo clippy --all-targets || true
+
+      - name: Upload Nexus CLI + rendered frame
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-engine-${{ env.NEXUS_VERSION }}-linux-x86_64
+          path: |
+            target/release/nexus
+            nexus-example.png
+            release-audit.json
+          if-no-files-found: error

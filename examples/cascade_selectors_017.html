@@ -1,0 +1,22 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexus 0.17 selector and cascade demo</title>
+<style>
+  :root { --accent: #5b5ce2; --muted: #e9eaf8; }
+  body { font-family: sans-serif; padding: 1rem; }
+  .card { padding: 1rem; margin-bottom: .75rem; background: var(--muted); }
+  .hero + .card { border: 2px solid var(--accent); }
+  .hero ~ .card:last-child { transform: translateX(8px); }
+  .card:is([data-ready], .featured):not(.disabled) { background: #ffffff; }
+  input:checked + label { color: var(--accent); }
+  button:disabled { opacity: .45; }
+  .empty:empty::after { content: "Empty state rendered by :empty"; color: var(--accent); }
+</style>
+<main>
+  <article class="card hero featured">Nexus Engine 0.17</article>
+  <article class="card" data-ready>Adjacent sibling + attribute state</article>
+  <article class="card">General sibling + :last-child</article>
+  <input id="flag" type="checkbox" checked><label for="flag">Checked state</label>
+  <button disabled>Disabled control</button>
+  <p class="empty"></p>
+</main>

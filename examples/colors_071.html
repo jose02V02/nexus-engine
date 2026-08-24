@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nexus 0.71 Modern Colors</title>
+  <style>
+    body { margin:24px; background:hsl(215 30% 94%); color:rgb(20 32 56); font:normal 400 16px/1.5 sans-serif; }
+    main { max-width:760px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; }
+    .card { padding:20px; border:3px solid currentColor; border-radius:14px; background:rgb(255 255 255 / 82%); }
+    .orange { color:orange; }
+    .aqua { color:hsl(184 75% 38%); }
+    .violet { color:#7139d9cc; }
+    .alpha { color:rgb(210 35 75 / 70%); background-color:currentColor; }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="card orange">Named color</article>
+    <article class="card aqua">Modern HSL</article>
+    <article class="card violet">Hex alpha</article>
+    <article class="card alpha">currentColor</article>
+  </main>
+</body>
+</html>

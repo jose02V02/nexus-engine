@@ -1,0 +1,22 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus 0.25 Grid Alignment</title>
+<style>
+  body { margin: 24px; font-family: sans-serif; background: #07111f; color: white; }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: minmax(120px, auto);
+    place-items: center;
+    place-content: space-evenly;
+    gap: 14px;
+    min-height: 520px;
+  }
+  .card { width: 120px; height: 80px; padding: 12px; background: #2563eb; border-radius: 14px; }
+  .featured { place-self: stretch; width: auto; height: auto; background: #7c3aed; }
+</style>
+<main class="gallery">
+  <article class="card featured">Nexus 0.25</article>
+  <article class="card">auto-fit</article><article class="card">minmax()</article>
+  <article class="card">place-items</article><article class="card">place-content</article>
+</main>
