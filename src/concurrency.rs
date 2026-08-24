@@ -79,7 +79,7 @@ impl SharedArrayBuffer {
             return Ok(AtomicWaitResult::NotEqual);
         }
         let timed_out = if let Some(timeout) = timeout {
-            let (_, status) = wait.changed.wait_timeout_while(guard, timeout, |generation| *generation == observed).unwrap_or_else(|poisoned| poisoned.into_inner());
+            let (_guard, status) = wait.changed.wait_timeout_while(guard, timeout, |generation| *generation == observed).unwrap_or_else(|poisoned| poisoned.into_inner());
             status.timed_out()
         } else {
             drop(wait.changed.wait_while(guard, |generation| *generation == observed).unwrap_or_else(|poisoned| poisoned.into_inner()));
