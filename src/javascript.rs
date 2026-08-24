@@ -7,6 +7,7 @@
 
 use std::cell::Cell;
 use std::ffi::c_void;
+use std::panic::AssertUnwindSafe;
 use std::os::raw::c_int;
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
@@ -1038,7 +1039,7 @@ fn install_native_callbacks(
     context
         .add_callback(
             "__nexus_fetch",
-            move |input: String,
+            AssertUnwindSafe(move |input: String,
                   method: String,
                   body: String,
                   content_type: String,
@@ -1087,14 +1088,14 @@ fn install_native_callbacks(
                     }
                     Err(error) => json!({"ok": false, "error": error.to_string()}).to_string(),
                 }
-            },
+            }),
         )
         .map_err(|error| error.to_string())?;
 
     let ws_open_state = Arc::clone(state);
     let ws_browser_state = network.browser_state();
     context
-        .add_callback("__nexus_ws_open", move |input: String, protocols_json: String| -> String {
+        .add_callback("__nexus_ws_open", AssertUnwindSafe(move |input: String, protocols_json: String| -> String {
             let protocols = serde_json::from_str::<Vec<String>>(&protocols_json).unwrap_or_default();
             let mut state = match ws_open_state.lock() {
                 Ok(state) => state,
