@@ -359,7 +359,7 @@ pub extern "system" fn Java_ai_nexus_shell_NativeBridge_tabs<'caller>(
             let mut out = String::new();
             for tab in browser.tab_summaries() {
                 out.push_str("tab=");
-                out.push_str(&format!("{}\t{}\t{}\t{}\t{}\t{}\n", tab.id, tab.active, field(&tab.title), field(tab.url.as_ref().map_or("", |url| url.as_str())), match tab.privacy { TabPrivacy::Normal => "normal", TabPrivacy::Private => "private" }, match tab.lifecycle { TabLifecycle::Active => "active", TabLifecycle::Suspended => "suspended", TabLifecycle::Frozen => "frozen" }));
+                out.push_str(&format!("{}\t{}\t{}\t{}\t{}\t{}\n", tab.id, tab.active, field(&tab.title), field(tab.url.as_ref().map_or("", |url| url.as_str())), match tab.privacy { TabPrivacy::Normal => "normal", TabPrivacy::Private => "private" }, match tab.lifecycle { TabLifecycle::Active => "active", TabLifecycle::Suspended => "suspended", TabLifecycle::Frozen => "frozen", TabLifecycle::Discarded => "discarded" }));
             }
             out
         }).unwrap_or_default();
