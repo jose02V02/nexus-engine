@@ -105,4 +105,4 @@ The UI is intentionally stable while the engine gains advanced CSS compatibility
 
 Viewport changes caused by device size or browser zoom trigger viewport-aware CSS recomputation, including responsive named Grid templates. Fixed/sticky/transformed elements remain painted and hit-tested using shared visual geometry.
 
-Android package version: `1.02.0` (`versionCode 102`).
+Android package version: `1.2.0` (`versionCode 102`).

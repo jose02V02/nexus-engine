@@ -1,6 +1,6 @@
 [package]
 name = "nexus-engine"
-version = "1.02.0"
+version = "1.2.0"
 edition = "2021"
 rust-version = "1.88"
 description = "Nexus Engine 1.02 - WebAssembly passive elements and bulk table operations"

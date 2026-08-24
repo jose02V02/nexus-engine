@@ -150,7 +150,7 @@
 - Opacity foundation for colors/text/borders.
 - `::before` / `::after` generated text content.
 - Shared visual geometry for renderer and hit-testing.
-- Android shell updated to versionCode 102 / versionName 1.02.0.
+- Android shell updated to versionCode 102 / versionName 1.2.0.
 
 ## Audit performed in this environment
 

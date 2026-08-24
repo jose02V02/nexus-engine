@@ -1,6 +1,6 @@
 # Changelog
 
-## Nexus Engine 1.02.0 — WebAssembly Bulk Table Operations
+## Nexus Engine 1.2.0 — WebAssembly Bulk Table Operations
 
 - Added passive function-index element-segment parsing and per-instance lifecycle state.
 - Added `table.init` and idempotent `elem.drop` execution.
@@ -8,7 +8,7 @@
 - Added pre-mutation source/destination bounds validation for atomic failure behavior.
 - Preserved imported-table synchronization and indirect-call type enforcement.
 - Added four passive-element and bulk-table regression tests.
-- Android versionCode 102 / versionName 1.02.0.
+- Android versionCode 102 / versionName 1.2.0.
 
 ## Nexus Engine 1.01.0 — WebAssembly Imported & Mutable Tables
 
