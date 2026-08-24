@@ -1095,7 +1095,7 @@ fn install_native_callbacks(
     let ws_open_state = Arc::clone(state);
     let ws_browser_state = network.browser_state();
     context
-        .add_callback("__nexus_ws_open", AssertUnwindSafe(move |input: String, protocols_json: String| -> String {
+        .add_callback("__nexus_ws_open", move |input: String, protocols_json: String| -> String {
             let protocols = serde_json::from_str::<Vec<String>>(&protocols_json).unwrap_or_default();
             let mut state = match ws_open_state.lock() {
                 Ok(state) => state,
